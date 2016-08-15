@@ -22,6 +22,7 @@
 namespace pocketmine\tile;
 
 use pocketmine\entity\Item as DroppedItem;
+use pocketmine\event\inventory\InventoryPickupItemEvent;
 use pocketmine\inventory\HopperInventory;
 use pocketmine\inventory\InventoryHolder;
 use pocketmine\item\Item;
