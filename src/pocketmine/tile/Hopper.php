@@ -21,6 +21,7 @@
 
 namespace pocketmine\tile;
 
+use pocketmine\block\Hopper as HopperBlock;
 use pocketmine\entity\Item as DroppedItem;
 use pocketmine\inventory\HopperInventory;
 use pocketmine\inventory\InventoryHolder;
@@ -90,7 +91,9 @@ class Hopper extends Spawnable implements InventoryHolder, Container, Nameable{
 	}
 
 	public function onUpdate(){
-
+		if(!($this->getBlock() instanceof HopperBlock)){
+			return false;
+		}
 		//Pickup dropped items
 		//This can happen at any time regardless of cooldown
 		$area = clone $this->getBlock()->getBoundingBox(); //Area above hopper to draw items from
