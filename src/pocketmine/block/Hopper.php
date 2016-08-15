@@ -59,6 +59,10 @@ class Hopper extends Transparent{
 		if($player instanceof Player){
 			$t = $this->getLevel()->getTile($this);
 			if($t instanceof TileHopper){
+				if($t->hasLock() and !$t->checkLock($item->getCustomName())){
+					$player->getServer()->getLogger()->debug($player->getName() . " attempted to open a locked hopper");
+					return true;
+				}
 				$player->addWindow($t->getInventory());
 			}
 		}

@@ -285,6 +285,10 @@ class Hopper extends Spawnable implements InventoryHolder, Container, Nameable{
 		}
 		$this->namedtag->Lock = new StringTag("Lock", $itemName);
 	}
+	
+	public function checkLock(string $key){
+		return $this->namedtag->Lock->getValue() === $key;
+	}
 
 	public function getSpawnCompound(){
 		$c = new CompoundTag("", [
