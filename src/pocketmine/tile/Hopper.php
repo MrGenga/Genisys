@@ -22,7 +22,6 @@
 namespace pocketmine\tile;
 
 use pocketmine\entity\Item as DroppedItem;
-use pocketmine\event\inventory\InventoryPickupItemEvent;
 use pocketmine\inventory\HopperInventory;
 use pocketmine\inventory\InventoryHolder;
 use pocketmine\item\Item;
@@ -114,10 +113,6 @@ class Hopper extends Spawnable implements InventoryHolder, Container, Nameable{
 			}
 
 			if($this->inventory->canAddItem($item)){
-				$ev = new InventoryPickupItemEvent($this->inventory, clone $item);
-				if($ev->isCancelled()){
-					continue;
-				}
 				$this->inventory->addItem($item);
 				$entity->kill();
 			}
